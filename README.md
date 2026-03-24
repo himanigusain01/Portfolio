@@ -4,9 +4,7 @@ Personal portfolio site: projects, skills, and contact — static, fast, and dep
 
 ## Live site
 
-**[Open the portfolio](https://portfolio-flax-nu-25.vercel.app)**
-
-*(If your Vercel URL changed after renaming the project, replace this link in this README and push again.)*
+**[Open the portfolio](https://portfolio-himanigusain.vercel.app/)**
 
 ## Tech stack
 
