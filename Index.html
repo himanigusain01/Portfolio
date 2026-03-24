@@ -1,0 +1,1303 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himani Gusain — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #161616;
+  --border: rgba(255,255,255,0.07);
+  --accent: #c8f542;
+  --accent2: #a8d930;
+  --white: #ffffff;
+  --muted: rgba(255,255,255,0.45);
+  --muted2: rgba(255,255,255,0.2);
+  --pad: 3rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+}
+
+a { color: inherit; }
+
+.cursor,
+.cursor-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.cursor {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  z-index: 99999;
+  transition: transform 0.1s;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(200,245,66,0.4);
+  z-index: 99998;
+  transition: width 0.3s, height 0.3s, transform 0.15s ease;
+}
+
+body:hover .cursor-ring { width: 36px; }
+
+nav,
+.section,
+.footer {
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+}
+
+.nav-logo,
+.hero-name,
+.section-title,
+.stat-val,
+.edu-year,
+.edu-degree,
+.skill-cat-num,
+.skill-cat-name,
+.exp-role,
+.project-index,
+.project-name,
+.hobby-title,
+.cli-label,
+.footer-brand {
+  font-family: 'Syne', sans-serif;
+}
+
+.nav-logo {
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo span,
+.section-num,
+.skill-cat-num,
+.exp-type,
+.project-index,
+.cli-arrow,
+.about-label,
+.hero-name .accent,
+.marquee-dot,
+.stat-val,
+.edu-badge {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a,
+.nav-cta,
+.hero-badge,
+.hero-number,
+.hero-tag,
+.marquee-item,
+.section-link,
+.about-label,
+.edu-badge,
+.exp-type,
+.project-coming,
+.tech {
+  text-transform: uppercase;
+}
+
+.nav-links a,
+.nav-cta,
+.section-link,
+.hero-tag,
+.edu-badge,
+.exp-type,
+.project-coming,
+.tech {
+  letter-spacing: 0.08em;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.section-link:hover {
+  color: var(--accent);
+}
+
+.nav-cta,
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: #000;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.nav-cta:hover,
+.btn-primary:hover {
+  background: var(--accent2);
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--pad) 4rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-badge,
+.hero-scroll-text {
+  position: absolute;
+  right: var(--pad);
+}
+
+.hero-badge {
+  top: 7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+.hero-badge::before,
+.hero-scroll-text::after {
+  content: '';
+}
+
+.hero-badge::before {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.hero-scroll-text {
+  bottom: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--muted2);
+  writing-mode: vertical-rl;
+}
+
+.hero-scroll-text::after {
+  width: 1px;
+  height: 60px;
+  background: var(--muted2);
+}
+
+.hero-number {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-name {
+  font-size: clamp(5rem, 12vw, 12rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.hero-name .line2 {
+  display: block;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+  color: transparent;
+}
+
+.hero-bottom,
+.section-header,
+.about-stat,
+.contact-link-item,
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-bottom {
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.hero-desc,
+.exp-desc,
+.contact-sub,
+.hobbies-text p {
+  line-height: 1.8;
+}
+
+.hero-desc {
+  max-width: 380px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.hero-tags,
+.skill-pills,
+.project-techs,
+.contact-btns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hero-tags {
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.hero-tag,
+.pill,
+.tech {
+  border: 1px solid var(--border);
+}
+
+.hero-tag {
+  padding: 0.4rem 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.marquee-bar {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  background: var(--bg2);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--muted2);
+}
+
+.marquee-dot { font-size: 1rem; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  align-items: baseline;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-num {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-link {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--muted2);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.section-link:hover { border-color: var(--accent); }
+
+.about-inner,
+.hobbies-inner,
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.about-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+}
+
+.about-highlight,
+.contact-tagline {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}
+
+.about-highlight {
+  font-size: 1.5rem;
+  color: var(--white);
+  line-height: 1.5;
+  margin: 2.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--accent);
+}
+
+.about-right,
+.edu-list,
+.exp-list,
+.hobby-list,
+.contact-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-right,
+.edu-list,
+.hobby-list,
+.contact-links {
+  gap: 1px;
+}
+
+.about-stat {
+  align-items: center;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-val {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.stat-label,
+.edu-school,
+.exp-org,
+.hobby-sub,
+.cli-handle,
+.footer-credit {
+  color: var(--muted);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+}
+
+.edu-item,
+.skill-cat,
+.project-card,
+.hobby-item,
+.contact-link-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.edu-item:hover,
+.skill-cat:hover,
+.hobby-item:hover,
+.contact-link-item:hover {
+  background: var(--bg3);
+  border-color: rgba(200,245,66,0.2);
+}
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.2rem 2rem;
+  margin-bottom: 2px;
+}
+
+.edu-year {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.edu-degree {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.edu-school {
+  font-size: 0.82rem;
+}
+
+.edu-badge {
+  font-size: 0.68rem;
+  border: 1px solid rgba(200,245,66,0.3);
+  padding: 0.3rem 0.8rem;
+  white-space: nowrap;
+}
+
+.skills-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.skill-cat {
+  padding: 2.5rem;
+}
+
+.skill-cat-num {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+.skill-cat-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+}
+
+.skill-pills,
+.project-techs,
+.contact-btns {
+  gap: 0.5rem;
+}
+
+.pill {
+  background: transparent;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  transition: all 0.25s;
+}
+
+.pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200,245,66,0.05);
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s;
+}
+
+.exp-item:hover { padding-left: 1rem; }
+
+.exp-year {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.exp-type {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(200,245,66,0.2);
+  padding: 0.25rem 0.6rem;
+}
+
+.exp-role {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.exp-org {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.exp-desc {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 600px;
+}
+
+.project-card {
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  border-color: rgba(200,245,66,0.25);
+  transform: translateY(-4px);
+}
+
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+.proj-1 .project-thumb { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
+.proj-2 .project-thumb { background: linear-gradient(135deg, #111a0d, #1e2e14); }
+.proj-3 .project-thumb { background: linear-gradient(135deg, #0d0d1a, #14142e); }
+
+.project-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background 0.3s;
+}
+
+.project-card:hover .project-thumb-overlay {
+  background: rgba(200,245,66,0.07);
+}
+
+.project-coming {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.62rem;
+  color: var(--muted2);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+}
+
+.project-body { padding: 1.8rem; }
+
+.project-index {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.7rem;
+}
+
+.project-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.project-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.tech {
+  font-size: 0.68rem;
+  color: var(--muted2);
+  padding: 0.2rem 0.55rem;
+}
+
+.hobbies-text .about-label { margin-bottom: 1.5rem; }
+
+.hobbies-text p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.2rem;
+}
+
+.hobby-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.8rem 2rem;
+}
+
+.hobby-icon-wrap {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(200,245,66,0.08);
+  border: 1px solid rgba(200,245,66,0.15);
+}
+
+.hobby-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.hobby-sub {
+  font-size: 0.8rem;
+}
+
+.contact-inner {
+  align-items: center;
+}
+
+.contact-tagline {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.3;
+  margin-bottom: 2rem;
+}
+
+.contact-tagline span {
+  color: var(--accent);
+  font-style: normal;
+  font-family: 'Syne', sans-serif;
+}
+
+.contact-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  padding: 0.9rem 2rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover { transform: translateX(4px); }
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.9rem 2rem;
+  font-size: 0.82rem;
+  transition: all 0.3s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact-link-item {
+  align-items: center;
+  padding: 1.5rem 1.8rem;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.cli-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cli-handle {
+  font-size: 0.8rem;
+}
+
+.cli-arrow {
+  font-size: 1.2rem;
+}
+
+.footer {
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-brand {
+  font-size: 0.82rem;
+}
+
+.footer-credit {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (max-width: 900px) {
+  :root { --pad: 1.5rem; }
+
+  nav { padding-top: 1.2rem; padding-bottom: 1.2rem; }
+  .nav-links { display: none; }
+  .hero { padding-bottom: 3rem; }
+  .hero-badge { right: var(--pad); }
+  .hero-scroll-text { display: none; }
+
+  .section { padding-top: 5rem; padding-bottom: 5rem; }
+
+  .about-inner,
+  .hobbies-inner,
+  .contact-inner,
+  .skills-grid,
+  .projects-grid,
+  .edu-item,
+  .exp-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .about-inner,
+  .hobbies-inner,
+  .contact-inner {
+    gap: 3rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a class="nav-logo" href="#">H<span></span>G</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Let's Talk</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-badge">Available for Internships</div>
+  <h1 class="hero-name">
+    Himani<br>
+    <span class="line2">Gusain<span class="accent">.</span></span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">CSE Student · Aspiring Software Engineer & Web Developer · Creative designer with a love for photography and travel.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Web Dev</span>
+      <span class="hero-tag">UI/UX</span>
+      <span class="hero-tag">Photography</span>
+      <span class="hero-tag">Traveller</span>
+    </div>
+  </div>
+  <div class="hero-scroll-text">Scroll Down</div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Web Development <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">UI/UX Design <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Photography <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Travel <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Creative Design <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Software Engineering <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Web Development <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">UI/UX Design <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Photography <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Travel <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Creative Design <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Software Engineering <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">01</div>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <a href="#contact" class="section-link">Get in Touch →</a>
+  </div>
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <p class="about-label">Who I Am</p>
+      <p class="about-text">I'm Himani Gusain, a Computer Science student with a burning passion for building things on the web. I live at the intersection of code and creativity — writing clean, functional software while designing interfaces that feel alive.</p>
+      <div class="about-highlight">
+        "Technology is most powerful when it's human. I build with both logic and heart."
+      </div>
+      <p class="about-text">When I'm not coding, you'll find me behind a camera lens capturing the world's quiet beauty, or with a backpack on, chasing new horizons. Every journey teaches me something that makes me a better creator.</p>
+    </div>
+    <div class="about-right reveal reveal-delay-1">
+      <div class="about-stat">
+        <div><div class="stat-val">CS</div><div class="stat-label">Engineering Student</div></div>
+        <div style="text-align:right"><div style="font-size:0.8rem;color:var(--muted)">Pursuing</div><div style="font-size:0.8rem;color:var(--muted)">B.Tech</div></div>
+      </div>
+      <div class="about-stat">
+        <div><div class="stat-val">3+</div><div class="stat-label">Projects Built</div></div>
+      </div>
+      <div class="about-stat">
+        <div><div class="stat-val">∞</div><div class="stat-label">Creative Ideas</div></div>
+      </div>
+      <div class="about-stat">
+        <div><div class="stat-val">🌍</div><div class="stat-label">Explorer at Heart</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">02</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+  </div>
+  <div class="edu-list reveal">
+    <div class="edu-item">
+      <div class="edu-year">2022 — 2026</div>
+      <div>
+        <div class="edu-degree">Bachelor of Technology — Computer Science & Engineering</div>
+        <div class="edu-school">Swami Rama Himalayan University, Dehradun (NAAC A+ Grade)</div>
+      </div>
+      <div class="edu-badge">Ongoing</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2022</div>
+      <div>
+        <div class="edu-degree">Intermediate — Science (12th)</div>
+        <div class="edu-school">Kendriya Vidyalaya Lansdowne, Pauri Garhwal</div>
+      </div>
+      <div class="edu-badge">Completed</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2020</div>
+      <div>
+        <div class="edu-degree">High School (10th)</div>
+        <div class="edu-school">Rajiv Gandhi Abhinav Aavasiya Vidyalaya Jaiharikhal, Pauri Garhwal</div>
+      </div>
+      <div class="edu-badge">Completed</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">03</div>
+      <h2 class="section-title">Skills</h2>
+    </div>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-cat">
+      <div class="skill-cat-num">01 / Languages & Frameworks</div>
+      <div class="skill-cat-name">Code</div>
+      <div class="skill-pills">
+        <span class="pill">HTML</span>
+        <span class="pill">CSS</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">Python</span>
+        <span class="pill">React</span>
+        <span class="pill">Node.js</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-num">02 / Design & Creative</div>
+      <div class="skill-cat-name">Design</div>
+      <div class="skill-pills">
+        <span class="pill">Figma</span>
+        <span class="pill">Canva</span>
+        <span class="pill">UI/UX Design</span>
+        <span class="pill">Photography</span>
+        <span class="pill">Lightroom</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-num">03 / Tools & Soft Skills</div>
+      <div class="skill-cat-name">Tools</div>
+      <div class="skill-pills">
+        <span class="pill">Git & GitHub</span>
+        <span class="pill">VS Code</span>
+        <span class="pill">Problem Solving</span>
+        <span class="pill">Teamwork</span>
+        <span class="pill">Communication</span>
+        <span class="pill">Adaptability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">04</div>
+      <h2 class="section-title">Experience</h2>
+    </div>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item reveal reveal-delay-2">
+      <div class="exp-left">
+        <div class="exp-year">2022 - 2026</div>
+        <div class="exp-type">Academic</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Student Developer</div>
+        <div class="exp-org">University Projects</div>
+        <div class="exp-desc">Applied core CS concepts — data structures, algorithms, and web fundamentals — in hands-on academic projects.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">05</div>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <a href="#contact" class="section-link">Collaborate →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card proj-1 reveal">
+      <div class="project-thumb">
+        💻
+        <div class="project-thumb-overlay"></div>
+      </div>
+      <div class="project-body">
+        <div class="project-index">01</div>
+        <div class="project-name">Digital Clock</div>
+        <div class="project-desc">A real-time digital clock application demonstrating proficiency in front-end web technologies with a clean, responsive interface.</div>
+        <div class="project-techs">
+          <span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JavaScript</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card proj-2 reveal reveal-delay-1">
+      <div class="project-thumb">
+        🧬
+        <div class="project-thumb-overlay"></div>
+      </div>
+      <div class="project-body">
+        <div class="project-index">02</div>
+        <div class="project-name">Bone Marrow Cell Classification</div>
+        <div class="project-desc">An automated diagnostic system using CNNs to classify bone marrow cells for detecting blood diseases like leukemia. Trained on 171,000+ images for binary and multi-class classification.</div>
+        <div class="project-techs">
+          <span class="tech">Python</span><span class="tech">TensorFlow</span><span class="tech">Keras</span><span class="tech">OpenCV</span><span class="tech">NumPy</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card proj-3 reveal reveal-delay-2">
+      <div class="project-thumb">
+        🌐
+        <div class="project-thumb-overlay"></div>
+        <div class="project-coming">Coming Soon</div>
+      </div>
+      <div class="project-body">
+        <div class="project-index">03</div>
+        <div class="project-name">Portfolio Website</div>
+        <div class="project-desc">A personal portfolio to showcase work, skills, and creative journey — built with modern web technologies and a focus on aesthetic design.</div>
+        <div class="project-techs">
+          <span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certifications">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">06</div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+  </div>
+  <div class="edu-list reveal">
+    <div class="edu-item">
+      <div class="edu-year">Deloitte</div>
+      <div>
+        <div class="edu-degree">Data Analytics Job Simulation</div>
+        <div class="edu-school">Forage</div>
+      </div>
+      <div class="edu-badge">Certified</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">IBM</div>
+      <div>
+        <div class="edu-degree">Data Analysis Using Python</div>
+        <div class="edu-school">IBM Skills Network</div>
+      </div>
+      <div class="edu-badge">Certified</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">LetsUpgrade</div>
+      <div>
+        <div class="edu-degree">Figma Bootcamp</div>
+        <div class="edu-school">NSDC Collaboration</div>
+      </div>
+      <div class="edu-badge">Certified</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">Udemy</div>
+      <div>
+        <div class="edu-degree">Complete Figma Course</div>
+        <div class="edu-school">Udemy</div>
+      </div>
+      <div class="edu-badge">Certified</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">SRHU</div>
+      <div>
+        <div class="edu-degree">Hybrid Mobile App Development using Flutter & React Native</div>
+        <div class="edu-school">Swami Rama Himalayan University</div>
+      </div>
+      <div class="edu-badge">Certified</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="hobbies">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">07</div>
+      <h2 class="section-title">Hobbies</h2>
+    </div>
+  </div>
+  <div class="hobbies-inner">
+    <div class="hobbies-text reveal">
+      <p class="about-label">Life Beyond the Screen</p>
+      <p>I believe the best developers are well-rounded humans. My hobbies don't just bring joy — they make me a more empathetic and creative builder.</p>
+      <p>Photography teaches me composition and visual storytelling. Travel expands my worldview. Design is my creative release. These aren't distractions from tech — they're what fuel it.</p>
+    </div>
+    <div class="hobby-list reveal reveal-delay-1">
+      <div class="hobby-item">
+        <div class="hobby-icon-wrap">📸</div>
+        <div>
+          <div class="hobby-title">Photography</div>
+          <div class="hobby-sub">Capturing light, landscapes & candid moments</div>
+        </div>
+      </div>
+      <div class="hobby-item">
+        <div class="hobby-icon-wrap">🌍</div>
+        <div>
+          <div class="hobby-title">Travelling</div>
+          <div class="hobby-sub">Exploring cultures, trails & new perspectives</div>
+        </div>
+      </div>
+      <div class="hobby-item">
+        <div class="hobby-icon-wrap">🎨</div>
+        <div>
+          <div class="hobby-title">Creative Design</div>
+          <div class="hobby-sub">UI mockups, digital art & visual storytelling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">08</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <p class="contact-tagline">Let's build something <span>great</span> together.</p>
+      <p class="contact-sub">Open to internships, collaborations, and creative projects. Whether you have an idea, an opportunity, or just want to say hi — my inbox is always open.</p>
+      <div class="contact-btns">
+        <a href="mailto:gusainhimani487@gmail.com" class="btn-primary">✉ Send Email</a>
+        <a href="Resume.docx" download class="btn-ghost">Download CV</a>
+      </div>
+    </div>
+    <div class="contact-right reveal reveal-delay-1">
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/himanigusain" target="_blank" class="contact-link-item">
+          <div><div class="cli-label">LinkedIn</div><div class="cli-handle">in/himanigusain</div></div>
+          <span class="cli-arrow">↗</span>
+        </a>
+        <a href="https://github.com/himanigusain01" target="_blank" class="contact-link-item">
+          <div><div class="cli-label">GitHub</div><div class="cli-handle">@himanigusain01</div></div>
+          <span class="cli-arrow">↗</span>
+        </a>
+        <a href="mailto:gusainhimani487@gmail.com" class="contact-link-item">
+          <div><div class="cli-label">Email</div><div class="cli-handle">gusainhimani487@gmail.com</div></div>
+          <span class="cli-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span class="footer-brand">© 2025 Himani Gusain</span>
+  <span class="footer-credit">Crafted with creativity & chai ☕</span>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .project-card, .hobby-item, .skill-cat').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+    ring.style.width = '60px';
+    ring.style.height = '60px';
+    ring.style.borderColor = 'rgba(200,245,66,0.3)';
+  });
+
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.width = '36px';
+    ring.style.height = '36px';
+    ring.style.borderColor = 'rgba(200,245,66,0.4)';
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 120) current = section.id;
+  });
+
+  navLinks.forEach(link => {
+    link.style.color = link.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+  });
+});
+</script>
+</body>
+</html>
